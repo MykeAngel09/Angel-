@@ -1,1 +1,333 @@
-index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Angel Banda — Business Analytics</title>
+<meta name="description" content="Angel Banda — Business Administration student focused on operations, finance, and data-driven decision making.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-950:#0A121F;
+    --navy-900:#0D1826;
+    --navy-800:#142238;
+    --navy-700:#1C324E;
+    --paper:#F4F2EC;
+    --paper-dim:#C9CAC4;
+    --slate:#8B96A8;
+    --brass:#B99762;
+    --brass-light:#D8BD8C;
+    --hairline:rgba(244,242,236,0.14);
+    --serif: "Newsreader", Georgia, "Times New Roman", serif;
+    --sans: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    box-sizing:border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  ,::before,*::after{ box-sizing:inherit; }
+  html{ scroll-padding-top: env(safe-area-inset-top, 0px); }
+
+  html,body{
+    margin:0;
+    padding:0;
+    background:var(--navy-950);
+    color:var(--paper);
+    font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  body{
+    background-image:
+      radial-gradient(1100px 620px at 82% -6%, rgba(185,151,98,0.16), transparent 60%),
+      radial-gradient(900px 700px at -10% 110%, rgba(28,50,78,0.55), transparent 60%),
+      linear-gradient(180deg, var(--navy-950) 0%, var(--navy-900) 45%, var(--navy-950) 100%);
+    background-attachment: fixed, fixed, fixed;
+    background-size: cover, cover, cover;
+    min-height:100vh;
+  }
+
+  .grid-veil{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    opacity:0.5;
+    pointer-events:none;
+    background-image:
+      linear-gradient(var(--hairline) 1px, transparent 1px),
+      linear-gradient(90deg, var(--hairline) 1px, transparent 1px);
+    background-size: 64px 64px;
+    -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.15) 55%, transparent 85%);
+            mask-image: linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.15) 55%, transparent 85%);
+  }
+
+  .plot{
+    position:fixed;
+    right:-4%;
+    top:8%;
+    width:min(62vw, 780px);
+    z-index:0;
+    opacity:0.85;
+    pointer-events:none;
+  }
+  @media (max-width:760px){
+    .plot{ opacity:0.5; top:4%; right:-18%; width:88vw; }
+  }
+
+  main{ position:relative; z-index:1; }
+
+  .wrap{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  header.top{
+    padding:28px 0 0;
+  }
+  .top .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .mark{
+    font-family:var(--serif);
+    font-size:18px;
+    letter-spacing:0.01em;
+    color:var(--paper);
+    text-decoration:none;
+  }
+  .mark em{ font-style:normal; color:var(--brass-light); }
+  nav a{
+    color:var(--slate);
+    text-decoration:none;
+    font-size:14px;
+    margin-left:28px;
+    transition:color .2s ease;
+  }
+  nav a:hover, nav a:focus-visible{ color:var(--paper); }
+
+  section.hero{
+    padding: 15vh 0 12vh;
+    min-height: 78vh;
+    display:flex;
+    align-items:center;
+  }
+  .eyebrow{
+    color:var(--brass-light);
+    font-size:14px;
+    margin:0 0 18px;
+    font-weight:500;
+  }
+  h1{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:clamp(44px, 8vw, 84px);
+    line-height:1.03;
+    margin:0 0 22px;
+    max-width:14ch;
+  }
+  .lede{
+    font-size:clamp(17px, 2vw, 20px);
+    line-height:1.6;
+    color:var(--paper-dim);
+    max-width:52ch;
+    margin:0;
+  }
+  .lede .accent{ color:var(--brass-light); }
+
+  section.about{
+    padding: 8vh 0 6vh;
+    border-top:1px solid var(--hairline);
+  }
+  .about .wrap{
+    display:grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap:64px;
+  }
+  @media (max-width:820px){
+    .about .wrap{ grid-template-columns:1fr; gap:24px; }
+  }
+  .col-label{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:20px;
+    color:var(--paper-dim);
+  }
+  .about p{
+    font-size:17px;
+    line-height:1.75;
+    color:var(--paper-dim);
+    margin:0 0 18px;
+    max-width:66ch;
+  }
+  .about p:last-child{ margin-bottom:0; }
+  .about strong{ color:var(--paper); font-weight:600; }
+
+  section.focus{
+    padding: 6vh 0 10vh;
+  }
+  .focus-row{
+    display:flex;
+    flex-wrap:wrap;
+    border-top:1px solid var(--hairline);
+  }
+  .focus-item{
+    flex:1 1 240px;
+    padding:28px 28px 28px 0;
+    border-bottom:1px solid var(--hairline);
+  }
+  .focus-item h3{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:22px;
+    margin:0 0 8px;
+    color:var(--paper);
+  }
+  .focus-item p{
+    margin:0;
+    font-size:15px;
+    line-height:1.6;
+    color:var(--slate);
+    max-width:32ch;
+  }
+
+  footer{
+    border-top:1px solid var(--hairline);
+    padding:36px 0 48px;
+  }
+  footer .wrap{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px 28px;
+    align-items:baseline;
+    justify-content:space-between;
+  }
+  footer .school{
+    font-size:14px;
+    color:var(--slate);
+  }
+  footer .links a{
+    color:var(--paper-dim);
+    text-decoration:none;
+    font-size:14px;
+    margin-left:20px;
+    border-bottom:1px solid transparent;
+    transition:border-color .2s ease, color .2s ease;
+  }
+  footer .links a:first-child{ margin-left:0; }
+  footer .links a:hover, footer .links a:focus-visible{
+    color:var(--brass-light);
+    border-color:var(--brass-light);
+  }
+
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--brass-light);
+    outline-offset:3px;
+  }
+
+  @media (prefers-reduced-motion: no-preference){
+    .plot path{
+      stroke-dasharray: 1200;
+      stroke-dashoffset: 1200;
+      animation: draw 2.4s ease forwards 0.2s;
+    }
+    .plot circle{
+      opacity:0;
+      animation: pop .5s ease forwards 2.1s;
+    }
+    h1, .lede, .eyebrow{
+      opacity:0;
+      transform:translateY(8px);
+      animation: rise .7s ease forwards;
+    }
+    .eyebrow{ animation-delay:.05s; }
+    h1{ animation-delay:.15s; }
+    .lede{ animation-delay:.32s; }
+  }
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+  @keyframes pop{ to{ opacity:1; } }
+  @keyframes rise{ to{ opacity:1; transform:translateY(0); } }
+</style>
+</head>
+<body>
+
+<div class="grid-veil" aria-hidden="true"></div>
+
+<svg class="plot" viewBox="0 0 600 340" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <path d="M10 300 C 90 300, 100 220, 160 235 S 260 150, 320 165 S 420 60, 480 75 S 560 20, 590 15"
+        stroke="url(#g1)" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="590" cy="15" r="5" fill="#D8BD8C"/>
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="600" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3C5878"/>
+      <stop offset="0.55" stop-color="#B99762"/>
+      <stop offset="1" stop-color="#D8BD8C"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<main>
+  <header class="top">
+    <div class="wrap">
+      <a class="mark" href="#top">Angel <em>Banda</em></a>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#focus">Focus</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="top">
+    <div class="wrap">
+      <p class="eyebrow">Business Administration · Pacific States University</p>
+      <h1>Angel Banda</h1>
+      <p class="lede">Building toward a career in <span class="accent">operations and finance</span>, where analytical tools and strategic thinking turn data into better business decisions.</p>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="wrap">
+      <div class="col-label">About</div>
+      <div>
+        <p>I studied Business Administration and am currently pursuing a <strong>Bachelor of Business Administration with an emphasis in Business Analytics</strong> at Pacific States University.</p>
+        <p>I have a strong interest in operations and finance, and I'm passionate about using <strong>data-driven insights</strong> to improve business efficiency and support sound financial decision-making.</p>
+        <p>My goal is to build a career where I can apply analytical tools and strategic thinking to optimize operations and drive financial performance for an organization.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="focus" id="focus">
+    <div class="wrap">
+      <div class="focus-row">
+        <div class="focus-item">
+          <h3>Operations</h3>
+          <p>Improving how a business runs day to day, from process efficiency to resource planning.</p>
+        </div>
+        <div class="focus-item">
+          <h3>Finance</h3>
+          <p>Supporting sound financial decisions through careful analysis and clear reporting.</p>
+        </div>
+        <div class="focus-item">
+          <h3>Business Analytics</h3>
+          <p>Turning raw data into insight that drives strategy and measurable performance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="wrap">
+      <span class="school">Pacific States University — Business Analytics</span>
+      <span class="links">
+        <a href="mailto:Myke.barandaa@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/" target="_Miguel Angel Banda" rel="noopener">LinkedIn</a>
+      </span>
+    </div>
+  </footer>
+</main>
+
+</body>
+</html>
