@@ -1,4 +1,5 @@
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -25,7 +26,7 @@
     padding-top: env(safe-area-inset-top, 0px);
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
-  ,::before,*::after{ box-sizing:inherit; }
+  *,*::before,*::after{ box-sizing:inherit; }
   html{ scroll-padding-top: env(safe-area-inset-top, 0px); }
 
   html,body{
@@ -37,6 +38,8 @@
     -webkit-font-smoothing:antialiased;
   }
 
+  /* Wallpaper background: layered gradients + a faint ascending plot line + grid,
+     fixed so it reads as a screen background behind all content. */
   body{
     background-image:
       radial-gradient(1100px 620px at 82% -6%, rgba(185,151,98,0.16), transparent 60%),
@@ -231,7 +234,7 @@
       stroke-dasharray: 1200;
       stroke-dashoffset: 1200;
       animation: draw 2.4s ease forwards 0.2s;
-    
+    }
     .plot circle{
       opacity:0;
       animation: pop .5s ease forwards 2.1s;
@@ -321,8 +324,8 @@
     <div class="wrap">
       <span class="school">Pacific States University — Business Analytics</span>
       <span class="links">
-        <a href="mailto:Myke.barandaa@gmail.com">Email</a>
-        <a href="https://www.linkedin.com/" target="_Miguel Angel Banda" rel="noopener">LinkedIn</a>
+        <a href="mailto:youremail@example.com">Email</a>
+        <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
       </span>
     </div>
   </footer>
